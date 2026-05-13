@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:github.com)",
+      "Read(//c/Users/HuJ/.claude/**)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Read(//c/Users/HuJ/**)",
+      "Bash(dir /B \"c:\\\\Users\\\\HuJ\\\\Desktop\\\\Crypto\")",
+      "Bash(Get-ChildItem -Force)",
+      "Bash(Select-Object Name, Mode)",
+      "Bash(powershell -Command \"Get-Command npx, npm, node, git -ErrorAction SilentlyContinue | Select-Object Name, Source\")",
+      "Bash(powershell -Command \"node --version; npm --version\")",
+      "Bash(powershell -Command \"Set-Location 'c:\\\\Users\\\\HuJ\\\\Desktop\\\\Crypto'; echo y | npx --yes create-next-app@15 . --typescript --tailwind --eslint --app --src-dir=false --import-alias='@/*' --no-turbopack --use-npm 2>&1 | Out-String\")",
+      "Bash(powershell -Command \"npx --yes create-next-app@15 --help 2>&1 | Out-String\")",
+      "Bash(powershell -Command \"Remove-Item 'c:\\\\Users\\\\HuJ\\\\Desktop\\\\Crypto\\\\package.json' -Force -ErrorAction SilentlyContinue; Set-Location 'c:\\\\Users\\\\HuJ\\\\Desktop\\\\Crypto'; npx --yes create-next-app@15 crypto-app --typescript --tailwind --eslint --app --src-dir=false --import-alias='@/*' --no-turbopack --use-npm --disable-git 2>&1 | Out-String\")",
+      "Bash(n\\\\\")",
+      "Bash(powershell -Command \"Set-Location 'c:\\\\Users\\\\HuJ\\\\Desktop\\\\Crypto'; Remove-Item -Recurse -Force 'crypto-app' -ErrorAction SilentlyContinue; @\\('No','No','No'\\) -join \\\\\"`n\\\\\")",
+      "Bash(npx --yes create-next-app@15 crypto-app --typescript --tailwind --eslint --app --import-alias='@/*' --use-npm --disable-git --yes)",
+      "Bash(Out-String\")",
+      "Bash(powershell -ExecutionPolicy Bypass -File 'c:\\\\Users\\\\HuJ\\\\Desktop\\\\Crypto\\\\_scaffold.ps1')",
+      "Bash(Out-String)",
+      "Bash(powershell -ExecutionPolicy Bypass -File \"c:\\\\Users\\\\HuJ\\\\Desktop\\\\Crypto\\\\_scaffold.ps1\")",
+      "Bash(powershell -Command \"Get-ChildItem -Force 'c:\\\\Users\\\\HuJ\\\\Desktop\\\\Crypto\\\\crypto-app' | Select-Object Name, Mode | Format-Table -AutoSize\")",
+      "Bash(powershell -Command \"Test-Path 'c:\\\\Users\\\\HuJ\\\\Desktop\\\\Crypto\\\\crypto-app'; Test-Path 'c:\\\\Users\\\\HuJ\\\\Desktop\\\\Crypto\\\\package.json'; Test-Path 'c:\\\\Users\\\\HuJ\\\\Desktop\\\\Crypto\\\\app'\")",
+      "Bash(powershell -ExecutionPolicy Bypass -File \"c:\\\\Users\\\\HuJ\\\\Desktop\\\\Crypto\\\\_move.ps1\")",
+      "Bash(powershell -Command \"Remove-Item 'c:\\\\Users\\\\HuJ\\\\Desktop\\\\Crypto\\\\_move.ps1','c:\\\\Users\\\\HuJ\\\\Desktop\\\\Crypto\\\\_scaffold.ps1' -Force\")",
+      "Bash(powershell -Command \"Remove-Item 'c:\\\\Users\\\\HuJ\\\\Desktop\\\\Crypto\\\\next.config.ts' -Force\")",
+      "Bash(powershell -Command \"Set-Location 'c:\\\\Users\\\\HuJ\\\\Desktop\\\\Crypto'; Remove-Item 'app/page.tsx','app/favicon.ico' -ErrorAction SilentlyContinue; Remove-Item 'public/next.svg','public/vercel.svg','public/file.svg','public/globe.svg','public/window.svg' -ErrorAction SilentlyContinue; Get-ChildItem 'app','public'\")",
+      "Bash(powershell -Command \"Get-Content 'c:\\\\Users\\\\HuJ\\\\Desktop\\\\Crypto\\\\node_modules\\\\tailwindcss\\\\package.json' | ConvertFrom-Json | Select-Object name, version\")",
+      "Bash(powershell -Command \"Get-ChildItem -Force 'c:\\\\Users\\\\HuJ\\\\Desktop\\\\Crypto' | Select-Object Mode, Name | Format-Table -AutoSize\")",
+      "Bash(powershell -Command \"Set-Location 'c:\\\\Users\\\\HuJ\\\\Desktop\\\\Crypto'; npx tsc --noEmit 2>&1 | Out-String\")",
+      "Bash(powershell -Command \"Set-Location 'c:\\\\Users\\\\HuJ\\\\Desktop\\\\Crypto'; npm run dev\")",
+      "Bash(powershell -Command \"Start-Sleep -Seconds 8; Get-Content 'C:\\\\Users\\\\HuJ\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-HuJ-Desktop-Crypto\\\\d6637c68-2495-4d16-993e-b8d510d34343\\\\tasks\\\\bqzmj2y5t.output' -ErrorAction SilentlyContinue\")",
+      "Bash(powershell -ExecutionPolicy Bypass -File \"c:\\\\Users\\\\HuJ\\\\Desktop\\\\Crypto\\\\_verify.ps1\")",
+      "Bash(powershell -Command \"Remove-Item 'c:\\\\Users\\\\HuJ\\\\Desktop\\\\Crypto\\\\_verify.ps1' -Force -ErrorAction SilentlyContinue\")",
+      "Bash(powershell -Command \"Set-Location 'c:\\\\Users\\\\HuJ\\\\Desktop\\\\Crypto'; git init 2>&1 | Out-String\")",
+      "Bash(powershell -Command \"Set-Location 'c:\\\\Users\\\\HuJ\\\\Desktop\\\\Crypto'; git status --short 2>&1 | Out-String\")",
+      "Bash(powershell -Command \"Set-Location 'c:\\\\Users\\\\HuJ\\\\Desktop\\\\Crypto'; git add .claude .gitignore .env.local.example README.md app docs eslint.config.mjs next.config.mjs package-lock.json package.json plan.md postcss.config.mjs tsconfig.json 2>&1 | Out-String; Write-Output '---'; git status --short 2>&1 | Out-String\")"
+    ]
+  }
+}

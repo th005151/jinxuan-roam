@@ -32,4 +32,9 @@ describe("resolveAffiliateUrl", () => {
     vi.stubEnv("AFFILIATE_MAX", "");
     expect(resolveAffiliateUrl("max")).toBeNull();
   });
+
+  it("returns null when env var is a malformed URL", () => {
+    vi.stubEnv("AFFILIATE_MAX", "not a url at all");
+    expect(resolveAffiliateUrl("max")).toBeNull();
+  });
 });

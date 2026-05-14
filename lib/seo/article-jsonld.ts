@@ -18,5 +18,6 @@ export function buildArticleJsonLd(fm: ArticleFrontmatter): WithContext<Article>
     },
     mainEntityOfPage: { "@type": "WebPage", "@id": fm.canonical },
     inLanguage: siteConfig.locale,
+    ...(fm.ogImage && { image: fm.ogImage }),
   };
 }

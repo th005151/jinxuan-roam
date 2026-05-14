@@ -2,10 +2,10 @@ import { describe, it, expect } from "vitest";
 import { getAllArticles, getArticleBySlug } from "./articles";
 
 describe("getAllArticles", () => {
-  it("returns at least the test-sample article", async () => {
+  it("returns at least the max-vs-binance article", async () => {
     const all = await getAllArticles();
     const slugs = all.map((a) => a.frontmatter.slug);
-    expect(slugs).toContain("test-sample");
+    expect(slugs).toContain("max-vs-binance");
   });
 
   it("sorts by publishedAt descending", async () => {
@@ -18,8 +18,8 @@ describe("getAllArticles", () => {
 
 describe("getArticleBySlug", () => {
   it("returns article when slug matches", async () => {
-    const article = await getArticleBySlug("test-sample");
-    expect(article?.frontmatter.title).toBe("測試文章");
+    const article = await getArticleBySlug("max-vs-binance");
+    expect(article?.frontmatter.title).toBe("MAX vs 幣安：什麼情境用哪個");
   });
 
   it("returns null when slug not found", async () => {

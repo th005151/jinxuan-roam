@@ -16,6 +16,7 @@ export function ScrollTracker({ sourceArticle }: { sourceArticle: string }) {
       }
     };
     window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, [sourceArticle]);
 

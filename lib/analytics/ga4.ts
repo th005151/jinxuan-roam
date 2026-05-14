@@ -36,5 +36,5 @@ export function trackExternalLink(target_domain: string, source_article: string)
 }
 
 export function trackScroll75(source_article: string): void {
-  window.gtag?.("event", "scroll_75", { source_article });
+  window.gtag?.("event", "scroll_75", { source_article, transport_type: "beacon" });
 }

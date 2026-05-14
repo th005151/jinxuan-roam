@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Coinkit — 台灣加密 Affiliate 站
 
-## Getting Started
+一個 Next.js 15 + MDX 的台灣加密貨幣新手內容站。Spec 與實作計畫見 `docs/superpowers/`。
 
-First, run the development server:
+## 快速開始
 
-```bash
+```powershell
+npm install
+Copy-Item .env.local.example .env.local
+# 編輯 .env.local 填入 affiliate URL 與 GA4 ID
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+開 `http://localhost:3000`。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 專案結構
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `app/` — Next.js App Router 頁面與 API
+- `components/` — React 元件（layout / article / cta / affiliate / seo）
+- `content/articles/` — MDX 文章
+- `lib/` — 業務邏輯（MDX 解析、SEO、analytics、affiliate）
+- `docs/superpowers/` — 設計文件、實作計畫、上線 checklist
 
-## Learn More
+## 寫新文章
 
-To learn more about Next.js, take a look at the following resources:
+1. 在 `content/articles/` 建立新 `.mdx` 檔
+2. Frontmatter 必須符合 `lib/schemas/article.ts` 的 Zod schema（少欄位 build 失敗）
+3. 文中可用 MDX 元件：`<CtaInline>`、`<CtaSummary>`、`<CtaComparison>`、`<Faq>`
+4. 本機 `npm run dev` 確認後 commit
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 測試
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```powershell
+npm test          # 跑一次
+npm run test:watch  # watch 模式
+```
 
-## Deploy on Vercel
+## 部署
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Push 到 GitHub，Vercel 自動 build。`postbuild` 會跑 next-sitemap 生成 sitemap 與 robots.txt。
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Spec 與停損
+
+詳見 `docs/superpowers/specs/2026-05-14-crypto-affiliate-mvp-design.md`。
+
+簡短版：3 / 6 / 12 個月各有檢核點，達不到判準就停損或 pivot。**收入是 bonus，不是評分標準。**

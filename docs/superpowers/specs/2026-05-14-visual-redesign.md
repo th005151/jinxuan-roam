@@ -152,9 +152,9 @@ Dark mode 重點：
 ## Implementation Strategy
 
 ### Phase 0：基礎
-- 加 next/font Inter + Source Serif 4 到 `app/layout.tsx`
-- `globals.css` 注入 CSS variables (light + dark)
-- 加 Tailwind config 對應的 color tokens（如果 Tailwind 4 用 CSS-first config，直接寫 `@theme inline`）
+- 加 next/font Inter + Source Serif 4 + Noto Sans TC + Noto Serif TC 到 `app/layout.tsx`，套用 CSS variables 於 `<html>` element
+- `globals.css` 用 Tailwind 4 `@theme inline` syntax 注入 color / font tokens（現有 globals.css 結構：`@import "tailwindcss"` + `@custom-variant dark (&:where(.dark, .dark *))` + `@source ...`，已 3 行。新加 `@theme inline { --color-bg: ...; --font-sans: var(--font-inter); ... }`）
+- dark 主題切換沿用 next-themes class-based（`@custom-variant dark` 已配好）
 
 ### Phase 1：Brand + Layout
 1. 新建 `components/brand/logo.tsx`

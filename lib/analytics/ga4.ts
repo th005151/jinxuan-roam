@@ -13,7 +13,7 @@ export interface AffiliateClickPayload {
   [key: string]: unknown;
 }
 
-export interface CtaViewPayload extends AffiliateClickPayload {}
+export type CtaViewPayload = AffiliateClickPayload;
 
 export function trackAffiliateClick(payload: AffiliateClickPayload): void {
   window.gtag?.("event", "affiliate_click", payload);

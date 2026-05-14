@@ -19,11 +19,9 @@ export function resolveAffiliateUrl(
   if (!base) return null;
   try {
     const url = new URL(base);
-    if (campaign) {
-      url.searchParams.set("utm_source", "coinkit");
-      url.searchParams.set("utm_medium", "article-cta");
-      url.searchParams.set("utm_campaign", campaign);
-    }
+    url.searchParams.set("utm_source", "coinkit");
+    url.searchParams.set("utm_medium", "article-cta");
+    if (campaign) url.searchParams.set("utm_campaign", campaign);
     return url.toString();
   } catch {
     return null;

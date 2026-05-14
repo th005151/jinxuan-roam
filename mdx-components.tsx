@@ -1,7 +1,15 @@
 import type { MDXComponents } from "mdx/types";
+import { CtaInline } from "@/components/cta/cta-inline";
+import { CtaSummary } from "@/components/cta/cta-summary";
+import { CtaComparison } from "@/components/cta/cta-comparison";
+import { Faq } from "@/components/article/faq";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
+    CtaInline,
+    CtaSummary,
+    CtaComparison,
+    Faq,
     h1: ({ children }) => (
       <h1 className="mt-8 mb-4 text-3xl font-bold tracking-tight">{children}</h1>
     ),

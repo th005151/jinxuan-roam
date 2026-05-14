@@ -33,7 +33,7 @@ export function CtaComparison({ rows, sourceArticle }: Props) {
                 <td className="py-2">{"★".repeat(info.beginnerFriendly)}</td>
                 <td className="py-2">
                   <a
-                    href={`/go/${exchange}?from=${sourceArticle}`}
+                    href={`/go/${exchange}?from=${encodeURIComponent(sourceArticle)}`}
                     className="text-blue-600 underline hover:text-blue-800"
                   >
                     註冊

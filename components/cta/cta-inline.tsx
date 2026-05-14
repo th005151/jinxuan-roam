@@ -41,7 +41,7 @@ export function CtaInline({ exchange, benefit, sourceArticle, position }: Props)
     >
       <p className="font-semibold">💡 {benefit}</p>
       <a
-        href={`/go/${exchange}?from=${sourceArticle}`}
+        href={`/go/${exchange}?from=${encodeURIComponent(sourceArticle)}`}
         className="mt-3 inline-block rounded bg-zinc-900 px-4 py-2 text-sm text-white hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900"
       >
         前往 {info.displayName} 註冊 →

@@ -24,7 +24,7 @@ export function CtaSummary({ steps, sourceArticle }: Props) {
             <span className="font-semibold">步驟 {idx + 1}：</span>
             {step.type === "affiliate" && step.exchange ? (
               <a
-                href={`/go/${step.exchange}?from=${sourceArticle}`}
+                href={`/go/${step.exchange}?from=${encodeURIComponent(sourceArticle)}`}
                 className="text-blue-600 underline hover:text-blue-800"
               >
                 {step.label}

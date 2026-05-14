@@ -24,7 +24,6 @@ describe("resolveAffiliateUrl", () => {
   });
 
   it("returns null for unknown exchange", () => {
-    // @ts-expect-error testing runtime guard
     expect(resolveAffiliateUrl("unknown")).toBeNull();
   });
 

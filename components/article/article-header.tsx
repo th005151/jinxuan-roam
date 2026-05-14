@@ -1,5 +1,6 @@
 import { Breadcrumb } from "./breadcrumb";
 import type { ArticleFrontmatter } from "@/lib/schemas/article";
+import { articleHref } from "@/lib/articles";
 
 export function ArticleHeader({ fm }: { fm: ArticleFrontmatter }) {
   return (
@@ -7,7 +8,7 @@ export function ArticleHeader({ fm }: { fm: ArticleFrontmatter }) {
       <Breadcrumb
         items={[
           { name: "首頁", url: "/" },
-          { name: fm.title, url: `/${fm.slug}` },
+          { name: fm.title, url: articleHref(fm.slug) },
         ]}
       />
       <h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">{fm.title}</h1>

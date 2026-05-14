@@ -32,3 +32,7 @@ export async function getArticleSlugs(): Promise<string[]> {
   const all = await loadAll();
   return all.map((a) => a.frontmatter.slug);
 }
+
+export function articleHref(slug: string): string {
+  return `/${slug}`;
+}

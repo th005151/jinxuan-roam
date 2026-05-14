@@ -14,15 +14,17 @@ interface Props {
 
 export function CtaInline({ exchange, benefit, sourceArticle, position }: Props) {
   const ref = useRef<HTMLDivElement>(null);
+  const firedRef = useRef(false);
   const info = exchanges[exchange];
 
   useEffect(() => {
     const node = ref.current;
-    if (!node) return;
+    if (!node || firedRef.current) return;
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
-          if (entry.intersectionRatio >= 0.5) {
+          if (entry.intersectionRatio >= 0.5 && !firedRef.current) {
+            firedRef.current = true;
             trackCtaView({ exchange, source_article: sourceArticle, cta_position: position });
             observer.disconnect();
           }

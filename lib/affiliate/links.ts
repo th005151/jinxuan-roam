@@ -11,7 +11,7 @@ export function isExchangeKey(value: string): value is ExchangeKey {
 }
 
 export function resolveAffiliateUrl(
-  exchange: ExchangeKey,
+  exchange: string,
   campaign?: string
 ): string | null {
   if (!isExchangeKey(exchange)) return null;

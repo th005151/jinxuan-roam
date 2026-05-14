@@ -1,10 +1,11 @@
 import Link from "next/link";
 import type { ArticleFrontmatter } from "@/lib/schemas/article";
+import { articleHref } from "@/lib/articles";
 
 export function ArticleCard({ fm }: { fm: ArticleFrontmatter }) {
   return (
     <Link
-      href={`/${fm.slug}`}
+      href={articleHref(fm.slug)}
       className="block rounded-lg border border-zinc-200 p-4 hover:border-zinc-400 dark:border-zinc-800 dark:hover:border-zinc-600"
     >
       <h3 className="font-semibold">{fm.title}</h3>

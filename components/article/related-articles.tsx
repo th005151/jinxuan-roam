@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getArticleBySlug } from "@/lib/articles";
+import { articleHref, getArticleBySlug } from "@/lib/articles";
 
 export async function RelatedArticles({ slugs }: { slugs: readonly string[] }) {
   const articles = await Promise.all(slugs.map((s) => getArticleBySlug(s)));
@@ -12,7 +12,7 @@ export async function RelatedArticles({ slugs }: { slugs: readonly string[] }) {
       <ul className="space-y-2">
         {found.map((a) => (
           <li key={a.frontmatter.slug}>
-            <Link href={`/${a.frontmatter.slug}`} className="hover:underline">
+            <Link href={articleHref(a.frontmatter.slug)} className="hover:underline">
               {a.frontmatter.title}
             </Link>
           </li>

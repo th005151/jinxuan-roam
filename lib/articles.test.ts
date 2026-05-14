@@ -11,7 +11,7 @@ describe("getAllArticles", () => {
   it("sorts by publishedAt descending", async () => {
     const all = await getAllArticles();
     for (let i = 1; i < all.length; i++) {
-      expect(all[i - 1].frontmatter.publishedAt >= all[i].frontmatter.publishedAt).toBe(true);
+      expect(all[i - 1]!.frontmatter.publishedAt >= all[i]!.frontmatter.publishedAt).toBe(true);
     }
   });
 });

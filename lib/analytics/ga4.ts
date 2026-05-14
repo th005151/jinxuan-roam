@@ -10,6 +10,7 @@ export interface AffiliateClickPayload {
   exchange: string;
   source_article: string;
   cta_position: "top" | "middle" | "bottom" | "inline";
+  [key: string]: unknown;
 }
 
 export interface CtaViewPayload extends AffiliateClickPayload {}

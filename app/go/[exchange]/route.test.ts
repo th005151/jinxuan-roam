@@ -17,6 +17,7 @@ describe("GET /go/[exchange]", () => {
     expect(res.status).toBe(302);
     expect(res.headers.get("location")).toContain("max.maicoin.com");
     expect(res.headers.get("location")).toContain("utm_campaign=home");
+    expect(res.headers.get("cache-control")).toBe("private, no-store");
   });
 
   it("returns 404 for unknown exchange", async () => {

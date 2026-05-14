@@ -17,5 +17,7 @@ export async function GET(request: Request, ctx: Context): Promise<NextResponse>
   if (!target) {
     return new NextResponse("Affiliate not configured", { status: 503 });
   }
-  return NextResponse.redirect(target, { status: 302 });
+  const response = NextResponse.redirect(target, { status: 302 });
+  response.headers.set("Cache-Control", "private, no-store");
+  return response;
 }

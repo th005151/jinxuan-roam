@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { BreadcrumbItem } from "@/lib/seo/breadcrumb-jsonld";
 
 export function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
+  if (items.length === 0) return null;
   return (
     <nav aria-label="breadcrumb" className="text-sm text-zinc-500">
       <ol className="flex flex-wrap items-center gap-1">

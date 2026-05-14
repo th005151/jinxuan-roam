@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 
+// Bump this when the policy text below actually changes.
+const POLICY_UPDATED_AT = "2026-05-14";
+
 export const metadata: Metadata = {
   title: "隱私權政策",
   description: "本站如何處理你的個人資料、cookie 與分析資料。",
@@ -9,7 +12,7 @@ export default function PrivacyPage() {
   return (
     <article className="mx-auto max-w-3xl px-4 py-8 prose prose-zinc dark:prose-invert">
       <h1>隱私權政策</h1>
-      <p>最後更新：2026-05-14</p>
+      <p>最後更新：{POLICY_UPDATED_AT}</p>
 
       <h2>資料蒐集</h2>
       <p>本站使用 Google Analytics 4 蒐集匿名統計資料，包含：</p>

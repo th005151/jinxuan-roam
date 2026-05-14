@@ -21,7 +21,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const article = await getArticleBySlug(slug);
-  if (!article) return {};
+  if (!article) return { title: "找不到文章" };
   const { frontmatter: fm } = article;
   return {
     title: fm.title,
@@ -41,10 +41,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ArticlePage({ params }: Props) {
   const { slug } = await params;
+  if (!/^[a-z0-9-]+$/.test(slug)) notFound();
   const article = await getArticleBySlug(slug);
   if (!article) notFound();
 
-  const { default: MDXContent } = await import(`@/content/articles/${slug}.mdx`);
+  let MDXContent: React.ComponentType;
+  try {
+    ({ default: MDXContent } = await import(`@/content/articles/${slug}.mdx`));
+  } catch {
+    notFound();
+  }
   const articleSchema = buildArticleJsonLd(article.frontmatter);
   const breadcrumbSchema = buildBreadcrumbJsonLd([
     { name: "首頁", url: siteConfig.url },

@@ -4,6 +4,7 @@ import { getAllArticles, getArticleBySlug } from "@/lib/articles";
 import { ArticleHeader } from "@/components/article/article-header";
 import { RelatedArticles } from "@/components/article/related-articles";
 import { DisclosureBanner } from "@/components/affiliate/disclosure-banner";
+import { ScrollTracker } from "@/components/analytics/scroll-tracker";
 import { JsonLd } from "@/components/seo/json-ld";
 import { buildArticleJsonLd } from "@/lib/seo/article-jsonld";
 import { buildBreadcrumbJsonLd } from "@/lib/seo/breadcrumb-jsonld";
@@ -67,6 +68,7 @@ export default async function ArticlePage({ params }: Props) {
         <MDXContent />
       </div>
       <RelatedArticles slugs={article.frontmatter.relatedSlugs} />
+      <ScrollTracker sourceArticle={article.frontmatter.slug} />
     </article>
   );
 }

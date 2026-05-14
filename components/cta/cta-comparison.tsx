@@ -1,4 +1,5 @@
 import { exchanges, type ExchangeKey } from "@/lib/config/exchanges";
+import { AffiliateLink } from "./affiliate-link";
 
 interface Row {
   exchange: ExchangeKey;
@@ -32,12 +33,14 @@ export function CtaComparison({ rows, sourceArticle }: Props) {
                 <td className="py-2">{info.twdDeposit ? "✓" : "需轉幣"}</td>
                 <td className="py-2">{"★".repeat(info.beginnerFriendly)}</td>
                 <td className="py-2">
-                  <a
-                    href={`/go/${exchange}?from=${encodeURIComponent(sourceArticle)}`}
+                  <AffiliateLink
+                    exchange={exchange}
+                    sourceArticle={sourceArticle}
+                    position="inline"
                     className="text-blue-600 underline hover:text-blue-800"
                   >
                     註冊
-                  </a>
+                  </AffiliateLink>
                 </td>
               </tr>
             );

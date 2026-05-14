@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ExchangeKey } from "@/lib/config/exchanges";
 import { DisclosureInline } from "@/components/affiliate/disclosure-inline";
+import { AffiliateLink } from "./affiliate-link";
 
 interface Step {
   label: string;
@@ -23,12 +24,14 @@ export function CtaSummary({ steps, sourceArticle }: Props) {
           <li key={idx} className="flex items-start gap-3">
             <span className="font-semibold">步驟 {idx + 1}：</span>
             {step.type === "affiliate" && step.exchange ? (
-              <a
-                href={`/go/${step.exchange}?from=${encodeURIComponent(sourceArticle)}`}
+              <AffiliateLink
+                exchange={step.exchange}
+                sourceArticle={sourceArticle}
+                position="bottom"
                 className="text-blue-600 underline hover:text-blue-800"
               >
                 {step.label}
-              </a>
+              </AffiliateLink>
             ) : (
               <Link href={step.href} className="text-blue-600 underline hover:text-blue-800">
                 {step.label}

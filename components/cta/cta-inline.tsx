@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { trackCtaView } from "@/lib/analytics/ga4";
 import { DisclosureInline } from "@/components/affiliate/disclosure-inline";
 import { exchanges, type ExchangeKey } from "@/lib/config/exchanges";
+import { AffiliateLink } from "./affiliate-link";
 
 interface Props {
   exchange: ExchangeKey;
@@ -42,12 +43,14 @@ export function CtaInline({ exchange, benefit, sourceArticle, position }: Props)
       className="my-6 rounded-md border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900"
     >
       <p className="font-semibold">💡 {benefit}</p>
-      <a
-        href={`/go/${exchange}?from=${encodeURIComponent(sourceArticle)}`}
+      <AffiliateLink
+        exchange={exchange}
+        sourceArticle={sourceArticle}
+        position={position}
         className="mt-3 inline-block rounded bg-zinc-900 px-4 py-2 text-sm text-white hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900"
       >
         前往 {info.displayName} 註冊 →
-      </a>
+      </AffiliateLink>
       <DisclosureInline />
     </div>
   );

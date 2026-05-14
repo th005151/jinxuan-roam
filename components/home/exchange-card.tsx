@@ -1,4 +1,7 @@
+"use client";
+
 import type { ExchangeInfo } from "@/lib/config/exchanges";
+import { AffiliateLink } from "@/components/cta/affiliate-link";
 
 export function ExchangeCard({ info }: { info: ExchangeInfo }) {
   return (
@@ -19,12 +22,14 @@ export function ExchangeCard({ info }: { info: ExchangeInfo }) {
           <dd>{"★".repeat(info.beginnerFriendly)}</dd>
         </div>
       </dl>
-      <a
-        href={`/go/${info.key}?from=home`}
+      <AffiliateLink
+        exchange={info.key}
+        sourceArticle="home"
+        position="inline"
         className="mt-4 block rounded bg-zinc-900 px-4 py-2 text-center text-sm text-white hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900"
       >
         前往註冊 →
-      </a>
+      </AffiliateLink>
     </div>
   );
 }

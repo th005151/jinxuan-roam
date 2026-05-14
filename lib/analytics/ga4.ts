@@ -6,17 +6,21 @@ declare global {
   }
 }
 
+export type CtaPosition = "top" | "middle" | "bottom" | "inline";
+
 export interface AffiliateClickPayload {
   exchange: string;
   source_article: string;
-  cta_position: "top" | "middle" | "bottom" | "inline";
+  cta_position: CtaPosition;
   [key: string]: unknown;
 }
 
 export type CtaViewPayload = AffiliateClickPayload;
 
+// transport_type: 'beacon' tells gtag.js to use sendBeacon so the event
+// survives the page tear-down that follows a same-document <a> navigation.
 export function trackAffiliateClick(payload: AffiliateClickPayload): void {
-  window.gtag?.("event", "affiliate_click", payload);
+  window.gtag?.("event", "affiliate_click", { ...payload, transport_type: "beacon" });
 }
 
 export function trackCtaView(payload: CtaViewPayload): void {
@@ -24,7 +28,11 @@ export function trackCtaView(payload: CtaViewPayload): void {
 }
 
 export function trackExternalLink(target_domain: string, source_article: string): void {
-  window.gtag?.("event", "external_link_click", { target_domain, source_article });
+  window.gtag?.("event", "external_link_click", {
+    target_domain,
+    source_article,
+    transport_type: "beacon",
+  });
 }
 
 export function trackScroll75(source_article: string): void {

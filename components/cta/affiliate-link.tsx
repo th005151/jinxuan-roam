@@ -1,13 +1,13 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { trackAffiliateClick } from "@/lib/analytics/ga4";
+import { trackAffiliateClick, type CtaPosition } from "@/lib/analytics/ga4";
 import type { ExchangeKey } from "@/lib/config/exchanges";
 
 interface Props {
   exchange: ExchangeKey;
   sourceArticle: string;
-  position: "top" | "middle" | "bottom" | "inline";
+  position: CtaPosition;
   className?: string;
   children: ReactNode;
 }

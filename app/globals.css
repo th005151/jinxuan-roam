@@ -3,3 +3,23 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @source "../content/**/*.{md,mdx}";
+
+@theme inline {
+  --font-sans: var(--font-inter), var(--font-noto-sans-tc), system-ui, sans-serif;
+  --font-serif: var(--font-source-serif), var(--font-noto-serif-tc), Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-brand: #059669;        /* emerald-600 */
+  --color-brand-deep: #047857;   /* emerald-700 */
+  --color-brand-soft: #ECFDF5;   /* emerald-50 */
+  --color-ink: #18181B;          /* zinc-900 */
+  --color-ink-muted: #71717A;    /* zinc-500 */
+
+  --shadow-brand-hover: 0 8px 24px rgba(5,150,105,0.08);
+  --shadow-mark: 0 12px 28px -8px rgba(5,150,105,0.4);
+}
+
+@layer base {
+  body { font-family: var(--font-sans); }
+  .prose-article { font-family: var(--font-serif); }
+}

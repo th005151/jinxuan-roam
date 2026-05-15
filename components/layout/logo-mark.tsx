@@ -55,5 +55,3 @@ export function LogoMark({
     </span>
   );
 }
-
-export default LogoMark;

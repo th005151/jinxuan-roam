@@ -85,5 +85,3 @@ function Subtitle({ tone, wide, small }: { tone: Tone; wide?: boolean; small?: b
     </span>
   );
 }
-
-export default Logo;

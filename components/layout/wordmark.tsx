@@ -29,5 +29,3 @@ export function Wordmark({
     </span>
   );
 }
-
-export default Wordmark;

@@ -64,7 +64,7 @@ export default async function ArticlePage({ params }: Props) {
       <JsonLd data={breadcrumbSchema} />
       <ArticleHeader fm={article.frontmatter} />
       {article.frontmatter.hasAffiliate && <DisclosureBanner />}
-      <div className="prose prose-zinc max-w-none dark:prose-invert">
+      <div className="prose-article max-w-none text-[17px] leading-[1.75] text-zinc-900 dark:text-zinc-100">
         <MDXContent />
       </div>
       <RelatedArticles slugs={article.frontmatter.relatedSlugs} />

@@ -50,3 +50,11 @@ next-env.d.ts
 /test-results/
 /playwright-report/
 /playwright/.cache/
+
+# Superpowers brainstorming session artifacts
+/.superpowers/
+
+# Local design handoff reference (not production code)
+/CryptoWebsite/
+/CryptoWebsite.zip
+/實作心得.txt

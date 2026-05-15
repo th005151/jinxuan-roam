@@ -11,7 +11,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     CtaComparison,
     Faq,
     h1: ({ children }) => (
-      <h1 className="mt-8 mb-4 text-3xl font-bold tracking-tight">{children}</h1>
+      <h2 className="mt-10 mb-4 text-2xl font-bold tracking-tight">{children}</h2>
     ),
     h2: ({ children }) => (
       <h2 className="mt-8 mb-3 text-2xl font-semibold tracking-tight">{children}</h2>

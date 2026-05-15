@@ -8,9 +8,7 @@ test("homepage renders", async ({ page }) => {
 
 test("article page renders title, breadcrumb, FAQ, and 2 JSON-LD blocks", async ({ page }) => {
   await page.goto("/max-vs-binance");
-  // ArticleHeader's h1 (first); MDX body also emits an h1 from `#` — that
-  // duplication is a spec-template follow-up, see project memory.
-  await expect(page.locator("article h1").first()).toContainText("MAX vs 幣安");
+  await expect(page.locator("article h1")).toContainText("MAX vs 幣安");
   await expect(page.locator('nav[aria-label="breadcrumb"]')).toBeVisible();
   await expect(page.locator("dl")).toBeVisible();
   const jsonLdCount = await page.locator('script[type="application/ld+json"]').count();

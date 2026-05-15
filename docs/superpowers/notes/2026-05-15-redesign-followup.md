@@ -14,10 +14,15 @@ Completed 2026-05-15 via plan [`docs/superpowers/plans/2026-05-15-littlefoxmoney
 
 - [ ] **`siteConfig.author.name`** — 仍是 placeholder「（你的暱稱）」。決定後同步更新 ArticleHeader meta、JSON-LD `author.name`、Footer copyright、per-article OG image
 - [ ] **Read time** — `ArticleCard`/`ArticleHeader` 尚無讀取時間。決定：(a) 在 frontmatter schema 加 `readMinutes` 欄位（每篇手填）或 (b) 從 MDX 內容字數於 build time 計算
-- [ ] **`LogoMark` / `Wordmark` 雙 export 不一致** — 兩個元件用 `export function … export default …` 雙導出，與專案其他元件（Header/Footer/Hero 等只用 named export）的慣例不符。低優先：可在某次 polish PR 統一移除 default export
 - [ ] **替代 logo glyphs（₣ / F× / $F）** — 設計 handoff 已 documented，未實作。若未來品牌變體需要可實作 `LogoMarkAlt` 元件家族
 - [ ] **Mascot illustration** — 獨立後續專案；v1 出貨 = FX mark only
 - [ ] **Tailwind 4 typography plugin** — 若未來 `@tailwindcss/typography` v4 穩定，可考慮替代靜態頁的 explicit per-element classes
+- [ ] **MDX content `# title` 與 ArticleHeader 重複顯示** — 既有的 `content/articles/*.mdx` 第一行 `# 標題` 與 ArticleHeader 渲染的 h1 內容相同（雖然已不再有雙 h1，因為 MDX `#` 現在 mapping 為 h2，但視覺上會看到標題出現兩次）。短期：作者規範「MDX 內容從 `##` 開始，移除第一行 `#`」；長期：在 `parseMdxFile` 自動 strip 開頭的 H1 line
+
+## Resolved during QA
+
+- ✅ **MDX YAML frontmatter renders as content**（commit `1ea91fa`）— 把 `experimental.mdxRs: true` 移除、加 `remark-frontmatter` plugin。原 mdxRs 不支援 remark plugins，YAML 整段被當 markdown 渲染
+- ✅ **`LogoMark` / `Wordmark` / `Logo` 雙 export 不一致**（commit `0eb577a`）— 移除 `export default`，與其他 layout/home 元件統一
 
 ## 部署前手動驗證
 

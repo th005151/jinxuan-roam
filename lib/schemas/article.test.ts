@@ -59,4 +59,19 @@ describe("ArticleFrontmatterSchema", () => {
     });
     expect(result.success).toBe(false);
   });
+
+  it("accepts optional primaryExchange", () => {
+    const result = ArticleFrontmatterSchema.safeParse({ ...validInput, primaryExchange: "max" });
+    expect(result.success).toBe(true);
+  });
+
+  it("rejects unknown primaryExchange value", () => {
+    const result = ArticleFrontmatterSchema.safeParse({ ...validInput, primaryExchange: "ftx" });
+    expect(result.success).toBe(false);
+  });
+
+  it("accepts frontmatter without primaryExchange (it is optional)", () => {
+    const result = ArticleFrontmatterSchema.safeParse(validInput);
+    expect(result.success).toBe(true);
+  });
 });

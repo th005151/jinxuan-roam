@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { EXCHANGE_KEYS } from "@/lib/config/exchanges";
 
 const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Date must be YYYY-MM-DD");
 
@@ -16,6 +17,7 @@ export const ArticleFrontmatterSchema = z.object({
   canonical: z.url(),
   hasAffiliate: z.boolean(),
   relatedSlugs: z.tuple([z.string(), z.string(), z.string()]),
+  primaryExchange: z.enum(EXCHANGE_KEYS).optional(),
 });
 
 export type ArticleFrontmatter = z.infer<typeof ArticleFrontmatterSchema>;

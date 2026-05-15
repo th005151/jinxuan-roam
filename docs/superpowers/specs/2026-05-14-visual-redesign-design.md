@@ -1,7 +1,9 @@
 # 視覺再設計：Modern Editorial + Emerald
 
+> **⚠️ Superseded by [2026-05-15-littlefoxmoney-redesign-design.md](2026-05-15-littlefoxmoney-redesign-design.md)** — 本 spec 的 D2 logo placeholder 與 brand 缺位由新 spec 的完整 littlefoxmoney 品牌系統取代；新 spec 同時涵蓋本文件所有 layout / token / component 變動。保留本文件僅為歷史參考。
+
 **日期**：2026-05-14
-**狀態**：Draft（待 user review）
+**狀態**：Superseded
 **範圍**：純視覺與 layout 重做，不動 routing、data model、analytics、SEO 結構
 
 ## 1. 動機

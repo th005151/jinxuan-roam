@@ -11,14 +11,14 @@ describe("resolveAffiliateUrl", () => {
   it("returns the URL with utm_source and utm_medium for a known exchange", () => {
     const url = new URL(resolveAffiliateUrl("max")!);
     expect(url.searchParams.get("r")).toBe("abc");
-    expect(url.searchParams.get("utm_source")).toBe("coinkit");
+    expect(url.searchParams.get("utm_source")).toBe("littlefoxmoney");
     expect(url.searchParams.get("utm_medium")).toBe("article-cta");
     expect(url.searchParams.get("utm_campaign")).toBeNull();
   });
 
   it("appends utm_campaign when provided", () => {
     const url = new URL(resolveAffiliateUrl("binance", "max-vs-binance")!);
-    expect(url.searchParams.get("utm_source")).toBe("coinkit");
+    expect(url.searchParams.get("utm_source")).toBe("littlefoxmoney");
     expect(url.searchParams.get("utm_medium")).toBe("article-cta");
     expect(url.searchParams.get("utm_campaign")).toBe("max-vs-binance");
   });

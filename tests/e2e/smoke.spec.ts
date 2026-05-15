@@ -53,7 +53,7 @@ test("/go/max redirects 302 with UTM params and Cache-Control: private, no-store
   expect(res.status()).toBe(302);
   const location = res.headers()["location"];
   expect(location).toContain("max.maicoin.com");
-  expect(location).toContain("utm_source=coinkit");
+  expect(location).toContain("utm_source=littlefoxmoney");
   expect(location).toContain("utm_medium=article-cta");
   expect(location).toContain("utm_campaign=test-source");
   expect(res.headers()["cache-control"]).toBe("private, no-store");

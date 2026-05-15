@@ -1,8 +1,9 @@
 export const siteConfig = {
-  name: "（待定）台灣加密新手指南",
-  shortName: "Coinkit",
-  description: "給台灣新手的加密貨幣交易所完整教學：MAX、幣安、派網一站搞懂。",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  name: "小狐理財 littlefoxmoney",
+  shortName: "littlefoxmoney",
+  description: "台灣加密貨幣新手指南：MAX、幣安、派網一站搞懂。",
+  tagline: "台灣加密貨幣新手指南",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://littlefoxmoney.com",
   locale: "zh-TW",
   author: {
     name: "（你的暱稱）",

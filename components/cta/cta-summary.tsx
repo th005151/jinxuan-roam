@@ -17,23 +17,28 @@ interface Props {
 
 export function CtaSummary({ steps, sourceArticle }: Props) {
   return (
-    <section className="mt-10 rounded-lg border border-zinc-200 p-6 dark:border-zinc-800">
-      <h2 className="mb-4 text-xl font-bold">接下來怎麼做？</h2>
-      <ol className="space-y-3">
+    <section className="mt-10 rounded-lg border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+      <h2 className="mb-5 text-xl font-bold text-zinc-900 dark:text-zinc-50">接下來怎麼做？</h2>
+      <ol className="space-y-4">
         {steps.map((step, idx) => (
           <li key={idx} className="flex items-start gap-3">
-            <span className="font-semibold">步驟 {idx + 1}：</span>
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand text-xs font-bold text-white">
+              {idx + 1}
+            </span>
             {step.type === "affiliate" && step.exchange ? (
               <AffiliateLink
                 exchange={step.exchange}
                 sourceArticle={sourceArticle}
                 position="bottom"
-                className="text-blue-600 underline hover:text-blue-800"
+                className="text-brand underline decoration-2 underline-offset-2 transition hover:text-brand-deep"
               >
                 {step.label}
               </AffiliateLink>
             ) : (
-              <Link href={step.href} className="text-blue-600 underline hover:text-blue-800">
+              <Link
+                href={step.href}
+                className="text-brand underline decoration-2 underline-offset-2 transition hover:text-brand-deep"
+              >
                 {step.label}
               </Link>
             )}

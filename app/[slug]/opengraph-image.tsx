@@ -21,20 +21,75 @@ export default async function Image({ params }: Props) {
     (
       <div
         style={{
-          height: "100%",
           width: "100%",
+          height: "100%",
+          background: "#FFFFFF",
+          padding: 64,
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "white",
-          padding: 80,
+          position: "relative",
+          fontFamily: "Inter, system-ui, sans-serif",
         }}
       >
-        <div style={{ fontSize: 28, color: "#71717a" }}>{siteConfig.shortName}</div>
-        <div style={{ fontSize: 64, fontWeight: 700, color: "#18181b", lineHeight: 1.2 }}>
-          {title}
+        <div
+          style={{
+            position: "absolute",
+            top: -120,
+            right: -120,
+            width: 420,
+            height: 420,
+            borderRadius: 9999,
+            background: "#ECFDF5",
+          }}
+        />
+
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 16,
+            zIndex: 1,
+          }}
+        >
+          <div
+            style={{
+              width: 56,
+              height: 56,
+              borderRadius: 9999,
+              background: "#059669",
+              color: "#FFFFFF",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontWeight: 800,
+              fontSize: 26,
+              letterSpacing: "-0.05em",
+            }}
+          >
+            FX
+          </div>
+          <div style={{ fontSize: 22, fontWeight: 600, color: "#18181B" }}>
+            {siteConfig.shortName}
+          </div>
         </div>
-        <div style={{ fontSize: 24, color: "#71717a" }}>By {author}</div>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: 18, zIndex: 1 }}>
+          <div
+            style={{
+              fontFamily: "Source Serif 4, Georgia, serif",
+              fontSize: 56,
+              fontWeight: 700,
+              color: "#18181B",
+              lineHeight: 1.2,
+              letterSpacing: "-0.02em",
+              maxWidth: 980,
+            }}
+          >
+            {title}
+          </div>
+          <div style={{ fontSize: 22, color: "#71717A" }}>By {author}</div>
+        </div>
       </div>
     ),
     { ...size }

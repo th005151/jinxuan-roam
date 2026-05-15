@@ -19,9 +19,9 @@ export function ArticleTOC({ entries }: Props) {
 
     const observer = new IntersectionObserver(
       (records) => {
-        const visible = records.filter((r) => r.isIntersecting);
-        if (visible.length > 0) {
-          setActiveId(visible[0].target.id);
+        const first = records.find((r) => r.isIntersecting);
+        if (first) {
+          setActiveId(first.target.id);
         }
       },
       { rootMargin: "-80px 0px -70% 0px", threshold: 0 }

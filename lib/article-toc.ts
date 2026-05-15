@@ -28,7 +28,7 @@ export function extractToc(markdown: string): TocEntry[] {
     if (inFence) continue;
 
     const m = /^(#{2,3})\s+(.+?)\s*#*\s*$/.exec(line);
-    if (!m) continue;
+    if (!m || !m[1] || !m[2]) continue;
     const depth = m[1].length === 2 ? 2 : 3;
     const text = m[2].trim();
     entries.push({ depth, text, id: slugify(text) });

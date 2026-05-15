@@ -78,3 +78,30 @@ test("sitemap and robots.txt are served", async ({ request }) => {
   expect(robots.status()).toBe(200);
   expect(await robots.text()).toContain("Disallow: /go/");
 });
+
+test("theme toggle switches html class between light and dark", async ({ page }) => {
+  await page.goto("/");
+  await page.waitForSelector('button[aria-label="Toggle theme"]');
+  const html = page.locator("html");
+
+  await page.click('button[aria-label="Toggle theme"]');
+  const afterFirst = await html.getAttribute("class");
+  expect(afterFirst === null ? "" : afterFirst).toMatch(/dark|light/);
+
+  await page.click('button[aria-label="Toggle theme"]');
+  const afterSecond = await html.getAttribute("class");
+  if (afterFirst?.includes("dark")) {
+    expect(afterSecond ?? "").not.toContain("dark");
+  } else {
+    expect(afterSecond ?? "").toContain("dark");
+  }
+});
+
+test("article TOC is visible on desktop and contains entry from MDX h2", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto("/max-vs-binance");
+  const toc = page.locator('nav[aria-label="文章目錄"]');
+  await expect(toc).toBeVisible();
+  const links = toc.locator("a");
+  expect(await links.count()).toBeGreaterThan(0);
+});

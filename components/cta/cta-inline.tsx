@@ -40,14 +40,14 @@ export function CtaInline({ exchange, benefit, sourceArticle, position }: Props)
   return (
     <div
       ref={ref}
-      className="my-6 rounded-md border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900"
+      className="my-6 rounded-md border-l-[3px] border-brand bg-brand-soft p-4 dark:bg-emerald-900/40"
     >
-      <p className="font-semibold">💡 {benefit}</p>
+      <p className="font-semibold text-zinc-900 dark:text-zinc-50">💡 {benefit}</p>
       <AffiliateLink
         exchange={exchange}
         sourceArticle={sourceArticle}
         position={position}
-        className="mt-3 inline-block rounded bg-zinc-900 px-4 py-2 text-sm text-white hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900"
+        className="mt-3 inline-block rounded-md bg-brand px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-deep"
       >
         前往 {info.displayName} 註冊 →
       </AffiliateLink>

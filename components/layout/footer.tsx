@@ -17,7 +17,7 @@ export function Footer() {
       <div className="mx-auto flex max-w-4xl flex-col gap-6 px-6">
         <Logo variant="horizontal" markSize={28} textSize={16} tone={tone} showSubtitle />
         <p className="max-w-2xl leading-relaxed">
-          本站內容僅供教育與資訊用途，不構成投資建議。加密貨幣具高度價格波動風險，投資前請自行評估。
+          本站部分連結為旅遊合作夥伴 affiliate 連結，內容僅供旅遊參考，價格與政策以各平台實際頁面為準。
         </p>
         <nav className="flex flex-wrap gap-5">
           <Link href="/about" className="hover:text-brand">關於本站</Link>

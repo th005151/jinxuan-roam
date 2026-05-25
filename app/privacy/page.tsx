@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-const POLICY_UPDATED_AT = "2026-05-15";
+const POLICY_UPDATED_AT = "2026-05-26";
 
 export const metadata: Metadata = {
   title: "隱私權政策",
@@ -35,7 +35,7 @@ export default function PrivacyPage() {
       <ul className="mt-2 ml-6 list-disc space-y-1 text-[17px] leading-[1.75] text-zinc-700 dark:text-zinc-300">
         <li>Google Analytics（網站分析）</li>
         <li>Vercel（網站託管）</li>
-        <li>各交易所 affiliate 連結（點擊後轉址到該交易所，受其隱私政策規範）</li>
+        <li>旅遊合作夥伴 affiliate 連結（Klook、Trip.com、KKday、Agoda、Booking.com、Expedia，點擊後轉址至各平台，受其隱私政策規範）</li>
       </ul>
 
       <h2 className="mt-8 mb-3 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">聯絡</h2>

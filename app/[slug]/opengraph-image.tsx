@@ -44,6 +44,7 @@ export default async function Image({ params }: Props) {
           }}
         />
 
+        {/* Top — brand mark + site name */}
         <div
           style={{
             display: "flex",
@@ -57,20 +58,34 @@ export default async function Image({ params }: Props) {
               width: 56,
               height: 56,
               borderRadius: 9999,
-              background: "#059669",
-              color: "#FFFFFF",
+              background: "#ECFDF5",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              fontWeight: 800,
-              fontSize: 26,
-              letterSpacing: "-0.05em",
             }}
           >
-            FX
+            <svg
+              width="38"
+              height="38"
+              viewBox="0 0 32 32"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6 26 Q 4 14 16 4 Q 28 14 26 26 Q 16 22 6 26 Z"
+                fill="#059669"
+              />
+              <path
+                d="M8 24 Q 16 16 24 6"
+                stroke="white"
+                strokeWidth="1.4"
+                strokeLinecap="round"
+                fill="none"
+                opacity="0.7"
+              />
+            </svg>
           </div>
           <div style={{ fontSize: 22, fontWeight: 600, color: "#18181B" }}>
-            {siteConfig.shortName}
+            {siteConfig.name}
           </div>
         </div>
 

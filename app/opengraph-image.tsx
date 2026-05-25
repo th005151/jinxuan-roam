@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { siteConfig } from "@/lib/config/site";
 
 export const runtime = "edge";
-export const alt = `${siteConfig.shortName} — ${siteConfig.tagline}`;
+export const alt = `${siteConfig.name} — ${siteConfig.tagline}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -35,24 +35,38 @@ export default function Image() {
           }}
         />
 
-        {/* Top — FX mark */}
+        {/* Top — tea-leaf mark */}
         <div
           style={{
             width: 88,
             height: 88,
             borderRadius: 9999,
-            background: "#059669",
-            color: "#FFFFFF",
+            background: "#ECFDF5",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            fontWeight: 800,
-            fontSize: 40,
-            letterSpacing: "-0.05em",
             zIndex: 1,
           }}
         >
-          FX
+          <svg
+            width="60"
+            height="60"
+            viewBox="0 0 32 32"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6 26 Q 4 14 16 4 Q 28 14 26 26 Q 16 22 6 26 Z"
+              fill="#059669"
+            />
+            <path
+              d="M8 24 Q 16 16 24 6"
+              stroke="white"
+              strokeWidth="1.4"
+              strokeLinecap="round"
+              fill="none"
+              opacity="0.7"
+            />
+          </svg>
         </div>
 
         {/* Bottom — eyebrow + headline + url */}
@@ -71,15 +85,15 @@ export default function Image() {
           <div
             style={{
               fontFamily: "Source Serif 4, Georgia, serif",
-              fontSize: 64,
+              fontSize: 72,
               fontWeight: 700,
               color: "#18181B",
               lineHeight: 1.15,
-              letterSpacing: "-0.02em",
+              letterSpacing: "0.02em",
               maxWidth: 880,
             }}
           >
-            新手也能搞懂的加密貨幣
+            {siteConfig.name}
           </div>
           <div
             style={{

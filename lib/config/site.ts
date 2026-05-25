@@ -1,13 +1,13 @@
 export const siteConfig = {
-  name: "小狐理財 littlefoxmoney",
-  shortName: "littlefoxmoney",
-  description: "台灣加密貨幣新手指南：MAX、幣安、派網一站搞懂。",
-  tagline: "台灣加密貨幣新手指南",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://littlefoxmoney.com",
+  name: "金萱漫遊",
+  shortName: "jinxuan",
+  description: "金萱的旅遊筆記：用一片茶葉的好奇心，記錄走過的城市、住過的店、吃過的味道。",
+  tagline: "走慢一點，看細一點",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://jinxuan-roam.vercel.app",
   locale: "zh-TW",
   author: {
-    name: "（你的暱稱）",
-    bio: "台灣加密貨幣中度玩家。實際用過 MAX、幣安、派網；這個站是我的學習筆記。",
+    name: "金萱",
+    bio: "前上班族，現在比較常在路上。寫的是私房路線、住宿筆記、跟旅程之間的小發現。",
   },
 } as const;
 

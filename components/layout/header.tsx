@@ -5,6 +5,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Logo } from "./logo";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { siteConfig } from "@/lib/config/site";
 
 export function Header() {
   const [mounted, setMounted] = useState(false);
@@ -15,7 +16,7 @@ export function Header() {
   return (
     <header className="border-b border-zinc-100 dark:border-zinc-900">
       <div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
-        <Link href="/" aria-label="littlefoxmoney 首頁">
+        <Link href="/" aria-label={`${siteConfig.name} 首頁`}>
           <Logo variant="horizontal" markSize={32} textSize={18} tone={tone} />
         </Link>
         <nav className="flex items-center gap-5 text-[13px]">

@@ -18,7 +18,7 @@ interface Props {
 export function CtaSummary({ steps, sourceArticle }: Props) {
   return (
     <section className="mt-10 rounded-lg border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
-      <h2 className="mb-5 text-xl font-bold text-zinc-900 dark:text-zinc-50">接下來怎麼做？</h2>
+      <h2 className="mb-5 text-xl font-bold text-zinc-900 dark:text-zinc-50">行前準備</h2>
       <ol className="space-y-4">
         {steps.map((step, idx) => (
           <li key={idx} className="flex items-start gap-3">

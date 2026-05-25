@@ -1,25 +1,33 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { resolveAffiliateUrl } from "@/lib/affiliate/links";
 import { trackAffiliateClick, type CtaPosition } from "@/lib/analytics/ga4";
-import type { ExchangeKey } from "@/lib/config/exchanges";
+import type { PartnerKey } from "@/lib/config/partners";
 
 interface Props {
-  exchange: ExchangeKey;
+  partner: PartnerKey;
+  /** Optional direct URL override (e.g. from Notion partnerLink field).
+   *  When provided, used verbatim instead of env-var-based affiliate URL. */
+  href?: string;
   sourceArticle: string;
   position: CtaPosition;
   className?: string;
   children: ReactNode;
 }
 
-export function AffiliateLink({ exchange, sourceArticle, position, className, children }: Props) {
-  const href = `/go/${exchange}?from=${encodeURIComponent(sourceArticle)}`;
+export function AffiliateLink({ partner, href, sourceArticle, position, className, children }: Props) {
+  const resolvedHref = href ?? resolveAffiliateUrl(partner, sourceArticle);
+  if (!resolvedHref) return null;
+
   return (
     <a
-      href={href}
+      href={resolvedHref}
+      rel="sponsored nofollow noopener"
+      target="_blank"
       className={className}
       onClick={() => {
-        trackAffiliateClick({ exchange, source_article: sourceArticle, cta_position: position });
+        trackAffiliateClick({ exchange: partner, source_article: sourceArticle, cta_position: position });
       }}
     >
       {children}

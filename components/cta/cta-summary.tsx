@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { ExchangeKey } from "@/lib/config/exchanges";
+import type { PartnerKey } from "@/lib/config/partners";
 import { DisclosureInline } from "@/components/affiliate/disclosure-inline";
 import { AffiliateLink } from "./affiliate-link";
 
@@ -7,7 +7,7 @@ interface Step {
   label: string;
   href: string;
   type: "affiliate" | "internal";
-  exchange?: ExchangeKey;
+  partner?: PartnerKey;
 }
 
 interface Props {
@@ -25,9 +25,9 @@ export function CtaSummary({ steps, sourceArticle }: Props) {
             <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand text-xs font-bold text-white">
               {idx + 1}
             </span>
-            {step.type === "affiliate" && step.exchange ? (
+            {step.type === "affiliate" && step.partner ? (
               <AffiliateLink
-                exchange={step.exchange}
+                partner={step.partner}
                 sourceArticle={sourceArticle}
                 position="bottom"
                 className="text-brand underline decoration-2 underline-offset-2 transition hover:text-brand-deep"

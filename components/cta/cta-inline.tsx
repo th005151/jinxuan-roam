@@ -3,20 +3,20 @@
 import { useEffect, useRef } from "react";
 import { trackCtaView } from "@/lib/analytics/ga4";
 import { DisclosureInline } from "@/components/affiliate/disclosure-inline";
-import { exchanges, type ExchangeKey } from "@/lib/config/exchanges";
+import { partners, type PartnerKey } from "@/lib/config/partners";
 import { AffiliateLink } from "./affiliate-link";
 
 interface Props {
-  exchange: ExchangeKey;
+  partner: PartnerKey;
   benefit: string;
   sourceArticle: string;
   position: "top" | "middle" | "bottom";
 }
 
-export function CtaInline({ exchange, benefit, sourceArticle, position }: Props) {
+export function CtaInline({ partner, benefit, sourceArticle, position }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const firedRef = useRef(false);
-  const info = exchanges[exchange];
+  const info = partners[partner];
 
   useEffect(() => {
     const node = ref.current;
@@ -26,7 +26,7 @@ export function CtaInline({ exchange, benefit, sourceArticle, position }: Props)
         for (const entry of entries) {
           if (entry.intersectionRatio >= 0.5 && !firedRef.current) {
             firedRef.current = true;
-            trackCtaView({ exchange, source_article: sourceArticle, cta_position: position });
+            trackCtaView({ exchange: partner, source_article: sourceArticle, cta_position: position });
             observer.disconnect();
           }
         }
@@ -35,7 +35,7 @@ export function CtaInline({ exchange, benefit, sourceArticle, position }: Props)
     );
     observer.observe(node);
     return () => observer.disconnect();
-  }, [exchange, sourceArticle, position]);
+  }, [partner, sourceArticle, position]);
 
   return (
     <div
@@ -44,12 +44,12 @@ export function CtaInline({ exchange, benefit, sourceArticle, position }: Props)
     >
       <p className="font-semibold text-zinc-900 dark:text-zinc-50">💡 {benefit}</p>
       <AffiliateLink
-        exchange={exchange}
+        partner={partner}
         sourceArticle={sourceArticle}
         position={position}
         className="mt-3 inline-block rounded-md bg-brand px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-deep"
       >
-        前往 {info.displayName} 註冊 →
+        前往 {info.displayName} →
       </AffiliateLink>
       <DisclosureInline />
     </div>

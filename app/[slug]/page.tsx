@@ -85,7 +85,8 @@ export default async function ArticlePage({ params }: Props) {
             </div>
           </details>
           <ArticleSidebarCta
-            primaryExchange={article.frontmatter.primaryExchange}
+            partner={article.frontmatter.partner}
+            partnerLink={article.frontmatter.partnerLink}
             sourceArticle={article.frontmatter.slug}
           />
           <RelatedArticles slugs={article.frontmatter.relatedSlugs} />

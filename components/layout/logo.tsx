@@ -74,14 +74,14 @@ function Subtitle({ tone, wide, small }: { tone: Tone; wide?: boolean; small?: b
   return (
     <span
       style={{
-        fontFamily: '"Noto Sans TC", system-ui, sans-serif',
+        fontFamily: '"Noto Serif TC", system-ui, serif',
         fontSize: small ? 11 : 12,
         fontWeight: 500,
         letterSpacing: wide ? "0.4em" : "0.32em",
         color,
       }}
     >
-      {wide ? "小 狐 理 財" : "小狐理財"}
+      {wide ? "走 慢 一 點，看 細 一 點" : "走慢一點，看細一點"}
     </span>
   );
 }

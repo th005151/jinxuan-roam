@@ -8,50 +8,51 @@ interface LogoMarkProps {
   /** Visual context. Default "light". */
   tone?: Tone;
   className?: string;
-  /** Override bg color. Wins over `tone`. */
-  bg?: string;
-  /** Override fg color. Wins over `tone`. */
+  /** Override stroke/fill color. Wins over `tone`. */
   fg?: string;
-  /** Accessible label. Default "littlefoxmoney". */
+  /** Accessible label. Default "金萱漫遊". */
   "aria-label"?: string;
 }
 
-const TONE_CLASS: Record<Tone, string> = {
-  light: "bg-brand text-white",
-  dark: "bg-emerald-400 text-emerald-900",
-  mono: "bg-zinc-900 text-white",
+const TONE_FILL: Record<Tone, string> = {
+  light: "#059669", // emerald-600
+  dark: "#34D399",  // emerald-400
+  mono: "#18181B",  // zinc-900
 };
 
 export function LogoMark({
   size = 32,
   tone = "light",
   className,
-  bg,
   fg,
-  "aria-label": ariaLabel = "littlefoxmoney",
+  "aria-label": ariaLabel = "金萱漫遊",
 }: LogoMarkProps) {
-  const overrideStyle: React.CSSProperties = {};
-  if (bg) overrideStyle.background = bg;
-  if (fg) overrideStyle.color = fg;
-
+  const fill = fg ?? TONE_FILL[tone];
   return (
-    <span
+    <svg
       role="img"
       aria-label={ariaLabel}
-      className={[
-        "inline-flex items-center justify-center rounded-full font-sans font-extrabold leading-none shrink-0",
-        TONE_CLASS[tone],
-        className ?? "",
-      ].join(" ")}
-      style={{
-        width: size,
-        height: size,
-        fontSize: size * 0.46,
-        letterSpacing: "-0.05em",
-        ...overrideStyle,
-      }}
+      width={size}
+      height={size}
+      viewBox="0 0 32 32"
+      xmlns="http://www.w3.org/2000/svg"
+      className={["shrink-0", className ?? ""].join(" ")}
     >
-      FX
-    </span>
+      {/* Tea leaf: pointed-tip ellipse from bottom-left → top-right.
+          Path traced by two quadratic curves meeting at the tips. */}
+      <path
+        d="M6 26 Q 4 14 16 4 Q 28 14 26 26 Q 16 22 6 26 Z"
+        fill={fill}
+      />
+      {/* Central vein for leaf detail */}
+      <path
+        d="M8 24 Q 16 16 24 6"
+        stroke="white"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        fill="none"
+        opacity="0.7"
+      />
+    </svg>
   );
 }

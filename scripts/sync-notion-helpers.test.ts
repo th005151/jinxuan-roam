@@ -52,6 +52,8 @@ describe("mapNotionPageToFrontmatter", () => {
 
   it("maps required + travel + partner fields", () => {
     const fm = mapNotionPageToFrontmatter(sample);
+    expect(fm).not.toBeNull();
+    if (!fm) return;
     expect(fm.title).toBe("京都嵐山三日漫遊");
     expect(fm.slug).toBe("kyoto-arashiyama-3day");
     expect(fm.publishedAt).toBe("2026-05-26");
@@ -71,6 +73,8 @@ describe("mapNotionPageToFrontmatter", () => {
       properties: { ...sample.properties, Slug: { rich_text: [] } },
     };
     const fm = mapNotionPageToFrontmatter(noSlug);
+    expect(fm).not.toBeNull();
+    if (!fm) return;
     expect(fm.slug).toMatch(/^post-[a-z0-9]{8}$/); // Chinese title → fallback
   });
 

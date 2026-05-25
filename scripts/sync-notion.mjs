@@ -105,8 +105,13 @@ async function main() {
       page_size: 100,
     });
 
+    if (queried.has_more) {
+      console.warn("[sync-notion] >100 published articles; pagination not implemented, only first 100 synced.");
+    }
+
     await clearOldSynced();
 
+    const seenSlugs = new Map();
     let ok = 0;
     let skipped = 0;
     for (const page of queried.results) {
@@ -115,6 +120,16 @@ async function main() {
         if (!fm) {
           skipped++;
           continue;
+        }
+        const originalSlug = fm.slug;
+        if (seenSlugs.has(originalSlug)) {
+          const count = seenSlugs.get(originalSlug);
+          seenSlugs.set(originalSlug, count + 1);
+          fm.slug = `${originalSlug}-${count + 1}`;
+          fm.canonical = `https://jinxuan-roam.vercel.app/${fm.slug}`;
+          console.warn(`[sync-notion] slug collision for "${originalSlug}"; using "${fm.slug}"`);
+        } else {
+          seenSlugs.set(originalSlug, 1);
         }
         const mdBlocks = await n2m.pageToMarkdown(page.id);
         const mdResult = n2m.toMarkdownString(mdBlocks);

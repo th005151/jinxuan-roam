@@ -63,7 +63,7 @@ export function mapNotionPageToFrontmatter(page) {
     keywords: readMultiSelect(props.Tags),
     canonical: `https://jinxuan-roam.vercel.app/${slug}`,
     hasAffiliate: Boolean(readSelect(props.Partner) && readSelect(props.Partner) !== "none"),
-    relatedSlugs: ["", "", ""], // sync script fills these post-pass
+    relatedSlugs: ["", "", ""], // P2: auto-related not implemented; caller fills manually if needed
     country: readSelect(props.Country) ?? undefined,
     location: readPlainText(props.Location) || undefined,
     tripType: readSelect(props["Trip Type"]) ?? undefined,

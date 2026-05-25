@@ -26,7 +26,7 @@ export function CtaInline({ partner, benefit, sourceArticle, position }: Props) 
         for (const entry of entries) {
           if (entry.intersectionRatio >= 0.5 && !firedRef.current) {
             firedRef.current = true;
-            trackCtaView({ exchange: partner, source_article: sourceArticle, cta_position: position });
+            trackCtaView({ partner, source_article: sourceArticle, cta_position: position });
             observer.disconnect();
           }
         }

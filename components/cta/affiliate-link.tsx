@@ -27,7 +27,7 @@ export function AffiliateLink({ partner, href, sourceArticle, position, classNam
       target="_blank"
       className={className}
       onClick={() => {
-        trackAffiliateClick({ exchange: partner, source_article: sourceArticle, cta_position: position });
+        trackAffiliateClick({ partner, source_article: sourceArticle, cta_position: position });
       }}
     >
       {children}

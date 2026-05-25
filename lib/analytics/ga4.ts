@@ -9,7 +9,7 @@ declare global {
 export type CtaPosition = "top" | "middle" | "bottom" | "inline";
 
 export interface AffiliateClickPayload {
-  exchange: string;
+  partner: string;
   source_article: string;
   cta_position: CtaPosition;
   [key: string]: unknown;

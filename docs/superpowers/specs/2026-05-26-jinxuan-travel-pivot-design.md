@@ -1,4 +1,4 @@
-# 金萱在路上 — Travel Blog Pivot Design
+# 金萱漫遊 — Travel Blog Pivot Design
 
 **Date**: 2026-05-26
 **Status**: Spec draft, pending user review
@@ -6,7 +6,7 @@
 
 ## 0. Goal & Constraints
 
-Pivot the existing `littlefoxmoney` Next.js codebase (a crypto-affiliate site, engineering 100% complete but never deployed) into a personal travel blog called **「金萱在路上」**, with content written and edited on a phone via Notion, syncing to the live site through a build-time pipeline. Ship to Vercel today.
+Pivot the existing `littlefoxmoney` Next.js codebase (a crypto-affiliate site, engineering 100% complete but never deployed) into a personal travel blog called **「金萱漫遊」**, with content written and edited on a phone via Notion, syncing to the live site through a build-time pipeline. Ship to Vercel today.
 
 **Hard constraints**:
 
@@ -117,7 +117,8 @@ A single Notion database named **「文章」**. Page body holds the article bod
 | `ExchangeCard` (home)    | → `PartnerCard` (home)  | Homepage card; renders partner instead of exchange |
 | `Hero` (home)            | (same name)             | Copy rewrite to travel positioning            |
 | UTM `utm_source=littlefoxmoney` | `utm_source=jinxuan` | One-line site-config edit              |
-| Wordmark text `littlefoxmoney` | `金萱在路上`        | One-line text change, keep FX mark glyph for now |
+| Wordmark text `littlefoxmoney` | `金萱漫遊`        | One-line text change                        |
+| `LogoMark` glyph (FX letters)  | 茶葉 SVG (tea leaf)   | Single-leaf SVG, emerald fill, dark-mode emerald-400 variant. Tea leaf double-pun: 金萱 is a tea cultivar + the writer's name. Replaces FX path; props / sizing API unchanged so all consumers (header / footer / favicon / OG) keep working. |
 
 **Remove**:
 
@@ -136,7 +137,7 @@ A single Notion database named **「文章」**. Page body holds the article bod
 - New frontmatter fields surfaced: `country`, `location`, `tripType`, `travelDate`, `partner`, `partnerLink`.
 - `package.json` script: `"sync": "node scripts/sync-notion.mjs"`; `"build": "npm run sync && next build"`.
 - Env vars (Vercel): `NOTION_TOKEN`, `NOTION_DATABASE_ID`.
-- OG image text update: `littlefoxmoney` → `金萱在路上` (regenerate via existing `/api/og` route or static asset).
+- OG image text update: `littlefoxmoney` → `金萱漫遊` (regenerate via existing `/api/og` route or static asset).
 
 ---
 
@@ -265,7 +266,7 @@ Documented but NOT in initial scope:
 
 None blocking. The following are decided but I want to call out so the user spots them:
 
-1. **Wordmark visual**: we keep the existing FX mark glyph and only swap the text to「金萱在路上」. If you want a new mark eventually, treat it as P2.
+1. **Wordmark visual**: text becomes「金萱漫遊」; the FX mark glyph is replaced by a tea-leaf SVG (single emerald-filled leaf, dark-mode emerald-400). The leaf double-puns on 金萱 being a tea cultivar — it carries semantic weight, not just decoration. `app/icon.tsx` + `app/apple-icon.tsx` + OG images are regenerated from the same SVG.
 2. **Seed article**: I will author a short welcome post in `_hello-jinxuan_seed.mdx` so the site has something to show before your first Notion article. You can delete it later.
 3. **`Partner` select values**: locked to klook / trip / kkday / agoda / booking / expedia / none in v1. Adding a new partner = 2-line change in `lib/partners.ts` + new option in Notion select.
 4. **All article URLs are flat** (`/<slug>`) — no `/blog/` prefix, matching the current routing. If you want `/travel/<slug>` for SEO grouping later, that's a future redirect.

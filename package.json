@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "sync": "node scripts/sync-notion.mjs",
+    "prebuild": "node scripts/sync-notion.mjs",
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",

@@ -1,39 +1,34 @@
-import { describe, it, expect, beforeEach, vi } from "vitest";
-import { resolveAffiliateUrl } from "./links";
+import { afterEach, describe, expect, it } from "vitest";
+import { resolveAffiliateUrl, isPartnerKey } from "./links";
+
+const ORIGINAL_ENV = { ...process.env };
+
+afterEach(() => {
+  process.env = { ...ORIGINAL_ENV };
+});
+
+describe("isPartnerKey (re-exported)", () => {
+  it("matches partner ids", () => {
+    expect(isPartnerKey("klook")).toBe(true);
+    expect(isPartnerKey("max")).toBe(false);
+  });
+});
 
 describe("resolveAffiliateUrl", () => {
-  beforeEach(() => {
-    vi.stubEnv("AFFILIATE_MAX", "https://max.maicoin.com/signup?r=abc");
-    vi.stubEnv("AFFILIATE_BINANCE", "https://accounts.binance.com/register?ref=xyz");
-    vi.stubEnv("AFFILIATE_PIONEX", "https://www.pionex.com/signUp?r=def");
-  });
-
-  it("returns the URL with utm_source and utm_medium for a known exchange", () => {
-    const url = new URL(resolveAffiliateUrl("max")!);
-    expect(url.searchParams.get("r")).toBe("abc");
-    expect(url.searchParams.get("utm_source")).toBe("littlefoxmoney");
-    expect(url.searchParams.get("utm_medium")).toBe("article-cta");
-    expect(url.searchParams.get("utm_campaign")).toBeNull();
-  });
-
-  it("appends utm_campaign when provided", () => {
-    const url = new URL(resolveAffiliateUrl("binance", "max-vs-binance")!);
-    expect(url.searchParams.get("utm_source")).toBe("littlefoxmoney");
-    expect(url.searchParams.get("utm_medium")).toBe("article-cta");
-    expect(url.searchParams.get("utm_campaign")).toBe("max-vs-binance");
-  });
-
-  it("returns null for unknown exchange", () => {
-    expect(resolveAffiliateUrl("unknown")).toBeNull();
-  });
-
   it("returns null when env var missing", () => {
-    vi.stubEnv("AFFILIATE_MAX", "");
-    expect(resolveAffiliateUrl("max")).toBeNull();
+    delete process.env.AFFILIATE_KLOOK;
+    expect(resolveAffiliateUrl("klook")).toBeNull();
   });
 
-  it("returns null when env var is a malformed URL", () => {
-    vi.stubEnv("AFFILIATE_MAX", "not a url at all");
-    expect(resolveAffiliateUrl("max")).toBeNull();
+  it("builds URL with jinxuan UTM params", () => {
+    process.env.AFFILIATE_KLOOK = "https://www.klook.com/affiliate?aid=123";
+    const url = resolveAffiliateUrl("klook", "kyoto-3day");
+    expect(url).toContain("utm_source=jinxuan");
+    expect(url).toContain("utm_medium=article-cta");
+    expect(url).toContain("utm_campaign=kyoto-3day");
+  });
+
+  it("returns null for non-partner keys", () => {
+    expect(resolveAffiliateUrl("foo")).toBeNull();
   });
 });

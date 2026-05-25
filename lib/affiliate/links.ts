@@ -1,25 +1,27 @@
-import { EXCHANGE_KEYS, type ExchangeKey } from "@/lib/config/exchanges";
+import { PARTNER_KEYS, type PartnerKey } from "@/lib/config/partners";
 
-const ENV_KEY: Record<ExchangeKey, string> = {
-  max: "AFFILIATE_MAX",
-  binance: "AFFILIATE_BINANCE",
-  pionex: "AFFILIATE_PIONEX",
+export { isPartnerKey } from "@/lib/config/partners";
+export type { PartnerKey } from "@/lib/config/partners";
+
+const ENV_KEY: Record<PartnerKey, string> = {
+  klook: "AFFILIATE_KLOOK",
+  trip: "AFFILIATE_TRIP",
+  kkday: "AFFILIATE_KKDAY",
+  agoda: "AFFILIATE_AGODA",
+  booking: "AFFILIATE_BOOKING",
+  expedia: "AFFILIATE_EXPEDIA",
 };
 
-export function isExchangeKey(value: string): value is ExchangeKey {
-  return (EXCHANGE_KEYS as readonly string[]).includes(value);
-}
-
 export function resolveAffiliateUrl(
-  exchange: string,
+  partner: string,
   campaign?: string
 ): string | null {
-  if (!isExchangeKey(exchange)) return null;
-  const base = process.env[ENV_KEY[exchange]];
+  if (!(PARTNER_KEYS as readonly string[]).includes(partner)) return null;
+  const base = process.env[ENV_KEY[partner as PartnerKey]];
   if (!base) return null;
   try {
     const url = new URL(base);
-    url.searchParams.set("utm_source", "littlefoxmoney");
+    url.searchParams.set("utm_source", "jinxuan");
     url.searchParams.set("utm_medium", "article-cta");
     if (campaign) url.searchParams.set("utm_campaign", campaign);
     return url.toString();

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { siteConfig } from "@/lib/config/site";
 
 export const metadata: Metadata = {
@@ -29,9 +30,9 @@ export default function AboutPage() {
       <p className="text-[17px] leading-[1.75] text-zinc-700 dark:text-zinc-300">
         本站部分連結為 affiliate（推薦）連結，你透過連結預訂時我可能會收到少許分潤，
         但對你的價格沒有影響。詳見{" "}
-        <a href="/disclosure" className="text-brand underline decoration-2 underline-offset-2 transition hover:text-brand-deep">
+        <Link href="/disclosure" className="text-brand underline decoration-2 underline-offset-2 transition hover:text-brand-deep">
           揭露聲明
-        </a>。
+        </Link>。
       </p>
       <h2 className="mt-8 mb-3 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">如何聯絡</h2>
       <p className="text-[17px] leading-[1.75] text-zinc-700 dark:text-zinc-300">

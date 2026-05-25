@@ -17,7 +17,7 @@ export function Hero() {
         從零開始：MAX 入金 → USDT 提領到幣安 → 派網被動策略。中度玩家的學習筆記。
       </p>
       <Link
-        href="/max-vs-binance"
+        href="/"
         className="mt-8 inline-block rounded-md bg-brand px-6 py-3 text-white shadow-sm transition hover:bg-brand-deep hover:shadow-md"
       >
         從這裡開始 →

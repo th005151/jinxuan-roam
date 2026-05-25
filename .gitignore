@@ -61,3 +61,10 @@ next-env.d.ts
 /CryptoWebsite/
 /CryptoWebsite.zip
 /實作心得.txt
+
+# Notion sync products (canonical source is the Notion database). Seed files are tracked.
+content/articles/*.mdx
+!content/articles/*_seed.mdx
+
+# Downloaded Notion images
+/public/uploads/notion/

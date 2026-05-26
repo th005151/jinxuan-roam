@@ -96,10 +96,23 @@ async function clearOldSynced() {
   }
 }
 
+async function resolveDataSourceId(databaseId) {
+  const db = await notion.databases.retrieve({ database_id: databaseId });
+  const sources = db.data_sources ?? [];
+  if (sources.length === 0) {
+    throw new Error(`database ${databaseId} has no data_sources (notion API v5 expects at least one)`);
+  }
+  if (sources.length > 1) {
+    console.warn(`[sync-notion] database has ${sources.length} data sources; using the first ("${sources[0].name ?? sources[0].id}")`);
+  }
+  return sources[0].id;
+}
+
 async function main() {
   try {
-    const queried = await notion.databases.query({
-      database_id: DATABASE_ID,
+    const dataSourceId = await resolveDataSourceId(DATABASE_ID);
+    const queried = await notion.dataSources.query({
+      data_source_id: dataSourceId,
       filter: { property: "Status", select: { equals: "Published" } },
       sorts: [{ property: "Published At", direction: "descending" }],
       page_size: 100,

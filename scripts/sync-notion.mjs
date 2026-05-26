@@ -126,7 +126,7 @@ async function main() {
           const count = seenSlugs.get(originalSlug);
           seenSlugs.set(originalSlug, count + 1);
           fm.slug = `${originalSlug}-${count + 1}`;
-          fm.canonical = `https://jinxuan-roam.vercel.app/${fm.slug}`;
+          fm.canonical = `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://jinxuan-roam.vercel.app"}/${fm.slug}`;
           console.warn(`[sync-notion] slug collision for "${originalSlug}"; using "${fm.slug}"`);
         } else {
           seenSlugs.set(originalSlug, 1);

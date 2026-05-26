@@ -32,6 +32,9 @@ function readMultiSelect(prop) {
   return (prop?.multi_select ?? []).map((m) => m.name);
 }
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://jinxuan-roam.vercel.app";
+const DEFAULT_KEYWORDS = ["旅行"];
+
 function readDate(prop) {
   return prop?.date?.start ?? null;
 }
@@ -60,8 +63,8 @@ export function mapNotionPageToFrontmatter(page) {
     publishedAt,
     updatedAt: publishedAt,
     author: "金萱",
-    keywords: readMultiSelect(props.Tags),
-    canonical: `https://jinxuan-roam.vercel.app/${slug}`,
+    keywords: readMultiSelect(props.Tags).length ? readMultiSelect(props.Tags) : DEFAULT_KEYWORDS,
+    canonical: `${SITE_URL}/${slug}`,
     hasAffiliate: Boolean(readSelect(props.Partner) && readSelect(props.Partner) !== "none"),
     relatedSlugs: ["", "", ""], // P2: auto-related not implemented; caller fills manually if needed
     country: readSelect(props.Country) ?? undefined,

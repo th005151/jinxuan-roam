@@ -13,11 +13,26 @@ const ARTICLES_DIR = path.join(REPO_ROOT, "content/articles");
 const IMAGES_DIR = path.join(REPO_ROOT, "public/uploads/notion");
 
 const TOKEN = process.env.NOTION_TOKEN;
-const DATABASE_ID = process.env.NOTION_DATABASE_ID;
+const RAW_DATABASE_ID = process.env.NOTION_DATABASE_ID;
 
-if (!TOKEN || !DATABASE_ID) {
+if (!TOKEN || !RAW_DATABASE_ID) {
   console.warn("[sync-notion] NOTION_TOKEN or NOTION_DATABASE_ID not set. Skipping sync; build will use existing files.");
   process.exit(0);
+}
+
+// Notion DB URLs look like https://www.notion.so/<workspace>/<32-hex>?v=<view-id>.
+// Accept the full URL, the bare ID, or a hyphenated UUID — extract the first 32 hex chars.
+function normalizeDatabaseId(raw) {
+  const hex = String(raw).replace(/-/g, "").match(/[0-9a-f]{32}/i);
+  if (!hex) {
+    throw new Error(`NOTION_DATABASE_ID does not contain a 32-char hex id (got: "${raw}")`);
+  }
+  return hex[0];
+}
+
+const DATABASE_ID = normalizeDatabaseId(RAW_DATABASE_ID);
+if (DATABASE_ID !== RAW_DATABASE_ID) {
+  console.log(`[sync-notion] normalized database id "${RAW_DATABASE_ID}" → "${DATABASE_ID}"`);
 }
 
 const notion = new Client({ auth: TOKEN });

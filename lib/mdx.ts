@@ -1,10 +1,15 @@
 import fs from "node:fs/promises";
+import path from "node:path";
 import matter from "gray-matter";
 import { ArticleFrontmatterSchema, type ArticleFrontmatter } from "./schemas/article";
 
 export interface ParsedArticle {
   frontmatter: ArticleFrontmatter;
   content: string;
+  /** Basename of the .mdx file on disk (e.g. `hello-jinxuan.mdx` or `_hello-jinxuan_seed.mdx`).
+   *  Slug-named seed files use underscored filenames to survive sync; consumers that need to
+   *  dynamic-import the file (page route) must use this, not `frontmatter.slug`. */
+  fileName: string;
 }
 
 export async function parseMdxFile(absPath: string): Promise<ParsedArticle> {
@@ -18,5 +23,5 @@ export async function parseMdxFile(absPath: string): Promise<ParsedArticle> {
         .join("\n")}`
     );
   }
-  return { frontmatter: parsed.data, content };
+  return { frontmatter: parsed.data, content, fileName: path.basename(absPath) };
 }

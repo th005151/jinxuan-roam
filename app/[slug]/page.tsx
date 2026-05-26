@@ -51,7 +51,7 @@ export default async function ArticlePage({ params }: Props) {
 
   let MDXContent: React.ComponentType;
   try {
-    ({ default: MDXContent } = await import(`@/content/articles/${slug}.mdx`));
+    ({ default: MDXContent } = await import(`@/content/articles/${article.fileName}`));
   } catch {
     notFound();
   }

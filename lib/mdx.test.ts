@@ -42,6 +42,7 @@ describe("parseMdxFile", () => {
     expect(result.frontmatter.slug).toBe("test");
     expect(result.frontmatter.title).toBe("Test");
     expect(result.content).toContain("Body paragraph.");
+    expect(result.fileName).toBe("test-article.mdx");
   });
 
   it("throws on invalid frontmatter", async () => {
